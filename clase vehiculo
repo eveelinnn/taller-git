@@ -1,0 +1,18 @@
+// Clase vehiculo
+class vehiculo{
+    public marca: string;
+    public modelo: string;
+    public año: number;
+    constructor(marca: string, modelo:string,año:number){
+        this.marca = marca;
+        this.modelo = modelo;
+        this.año = año;
+    }
+    public mostrarDetalles(): void {
+        console.log("this.marca:" + this.marca);
+        console.log("this.modelo:" + this.modelo);
+        console.log("this.año:" + this.año);
+    }
+
+
+}
