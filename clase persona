@@ -1,1 +1,102 @@
-class Persona{
+class Persona {
+    nombre: string;
+    apellidos: string;
+    numeroCedula: string;
+    estadoCivil: string;
+
+    constructor(nombres: string, apellidos: string, numeroCedula: string, estadoCivil: string) {
+        this.nombre = nombres;
+        this.apellidos = apellidos;
+        this.numeroCedula = numeroCedula;
+        this.estadoCivil = estadoCivil;
+    }
+
+    cambiarEstadoCivil(nuevoEstadoCivil: string) {
+        this.estadoCivil = nuevoEstadoCivil;
+    }
+
+    imprimirInformacion(): string {
+    return `Nombre: ${this.nombre} ${this.apellidos}
+Cédula: ${this.numeroCedula}
+Estado Civil: ${this.estadoCivil}`;
+}
+
+    }
+
+
+class Estudiante extends Persona {
+    curso: string;
+
+    constructor(nombres: string, apellidos: string, numeroCedula: string, estadoCivil: string) {
+        super(nombres, apellidos, numeroCedula, estadoCivil);
+        this.curso = "";
+    }
+
+    matricular(curso: string) {
+        this.curso = curso;
+    }
+    override imprimirInformacion(): string {
+        return `Hola mi Nombre es: ${this.nombre} ${this.apellidos}
+Cédula: ${this.numeroCedula}
+Estado Civil: ${this.estadoCivil} 
+Curso: ${this.curso}`
+    }
+}
+
+class Empleado extends Persona {
+    añoIncorporacion: number;
+    numeroDespacho: number;
+
+    constructor(nombres: string, apellidos: string, numeroCedula: string, estadoCivil: string, añoIncorporacion: number, numeroDespacho: number) {
+        super(nombres, apellidos, numeroCedula, estadoCivil);
+        this.añoIncorporacion = añoIncorporacion;
+        this.numeroDespacho = numeroDespacho;
+    }
+
+    reasignarDespacho(nuevoDespacho: number) {
+        this.numeroDespacho = nuevoDespacho;
+    }
+}
+
+class Profesor extends Empleado {
+    departamento: string;
+
+    constructor(nombres: string, apellidos: string, numeroCedula: string, estadoCivil: string, añoIncorporacion: number, numeroDespacho: number, departamento: string) {
+        super(nombres, apellidos, numeroCedula, estadoCivil, añoIncorporacion, numeroDespacho);
+        this.departamento = departamento;
+    }
+
+    cambiarDepartamento(nuevoDepartamento: string) {
+        this.departamento = nuevoDepartamento;
+    }
+}
+
+class PersonalServicio extends Empleado {
+    seccion: string;
+
+    constructor(nombres: string, apellidos: string, numeroCedula: string, estadoCivil: string, añoIncorporacion: number, numeroDespacho: number, seccion: string) {
+        super(nombres, apellidos, numeroCedula, estadoCivil, añoIncorporacion, numeroDespacho);
+        this.seccion = seccion;
+    }
+
+    trasladarSeccion(nuevaSeccion: string) {
+        this.seccion = nuevaSeccion;
+    }
+}
+
+// Instancias de ejemplo
+const persona = new Persona("jhon", "quijije", "8767867567", "Soltero");
+console.log(persona.imprimirInformacion());
+
+const estudiante = new Estudiante("eve", "zambrano", "1345678954", "Soltera");
+estudiante.matricular("fisica");
+console.log(estudiante.imprimirInformacion());
+
+const empleado = new Empleado("juan", "cedeño", "11223344", "Casado", 2011, 104);
+console.log(empleado.imprimirInformacion());
+
+const profesor = new Profesor("Maria", "Alonzo", "55667788", "Soltera", 2017, 250, "Lenguaje");
+console.log(profesor.imprimirInformacion());
+
+const personalServicio = new PersonalServicio("anthomy", "lopez", "99887766", "Casado", 2015, 120, "Limpieza");
+console.log(personalServicio.imprimirInformacion());
